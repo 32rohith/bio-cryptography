@@ -1,0 +1,365 @@
+:root {
+  --bg-color: #050505;
+  --text-color: #e0e0e0;
+  --primary-color: #00ccff;
+  --secondary-color: #ff00ff;
+  --success-color: #00ff99;
+  --danger-color: #ff3333;
+  --panel-bg: rgba(20, 20, 20, 0.6);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at 50% 50%, #111 0%, #000 100%);
+  color: var(--text-color);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
+}
+
+.header-title h1 {
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.highlight {
+  color: var(--primary-color);
+}
+
+/* Security Badge */
+.security-badge {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #111;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.security-badge.secure {
+  background: rgba(0, 255, 153, 0.1);
+  border-color: var(--success-color);
+  box-shadow: 0 0 15px rgba(0, 255, 153, 0.2);
+}
+
+.security-badge.danger {
+  background: rgba(255, 51, 51, 0.1);
+  border-color: var(--danger-color);
+  box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
+  animation: pulse-danger 2s infinite;
+}
+
+@keyframes pulse-danger {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(255, 51, 51, 0.5);
+  }
+
+  100% {
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
+  }
+}
+
+.badge-icon {
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+.badge-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+  color: var(--text-color);
+}
+
+.secure .badge-title {
+  color: var(--success-color);
+}
+
+.danger .badge-title {
+  color: var(--danger-color);
+}
+
+.badge-detail {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Grid Layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 30px;
+}
+
+/* Graph Section */
+.graph-section {
+  min-height: 400px;
+}
+
+/* Stats Section */
+.stats-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--panel-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.stat-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  margin: 5px 0;
+}
+
+.unit {
+  font-size: 1rem;
+  color: #666;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.value-mono {
+  font-family: 'Fira Code', monospace;
+  color: var(--primary-color);
+}
+
+.code-block {
+  font-family: 'Fira Code', monospace;
+  background: #000;
+  padding: 12px;
+  border-radius: 6px;
+  color: var(--success-color);
+  font-size: 0.9rem;
+  border: 1px solid #333;
+  margin-bottom: 5px;
+}
+
+.card-danger .code-block {
+  color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #555;
+  margin-top: 5px;
+}
+
+.stat-bar-container {
+  width: 100%;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.stat-bar {
+  height: 100%;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+/* Terminal Styles */
+.crypto-terminal {
+  background: #000;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-family: 'Fira Code', monospace;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  height: 40vh;
+  /* Fixed height for scrollable */
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-header {
+  background: #1a1a1a;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.terminal-title {
+  color: #888;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.red {
+  background: #ff5f56;
+}
+
+.dot.yellow {
+  background: #ffbd2e;
+}
+
+.dot.green {
+  background: #27c93f;
+}
+
+.terminal-body {
+  padding: 15px;
+  overflow-y: auto;
+  flex-grow: 1;
+  color: #0f0;
+  font-size: 0.85rem;
+}
+
+/* Scrollbar styling */
+.terminal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.log-entry {
+  margin-bottom: 8px;
+  line-height: 1.4;
+  border-bottom: 1px solid #111;
+  padding-bottom: 4px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.log-time {
+  color: #666;
+  margin-right: 10px;
+}
+
+.log-lock {
+  color: #ff3333;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.log-cipher {
+  color: #aaa;
+}
+
+.decryption-anim {
+  display: inline-block;
+  opacity: 0;
+  animation: decryptReveal 0.5s ease-out forwards;
+  animation-delay: 0.2s;
+  /* Simulated processing time */
+  margin-left: 10px;
+}
+
+.log-unlock {
+  color: #00ff99;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.log-plain {
+  color: #fff;
+}
+
+.log-entry.system {
+  color: #888;
+  font-style: italic;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes decryptReveal {
+  0% {
+    opacity: 0;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+  }
+
+  50% {
+    opacity: 1;
+    color: #fff;
+  }
+
+  100% {
+    opacity: 1;
+    color: inherit;
+  }
+}
